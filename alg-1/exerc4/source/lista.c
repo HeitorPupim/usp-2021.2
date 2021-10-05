@@ -3,7 +3,7 @@
 typedef struct no_st no_t;
 
 struct no_st {
-    elem info;
+    num info;
     no_t *prox;
 };
 
@@ -12,9 +12,8 @@ struct lista_st {
     int tam;
 };
 
+
 // Aloca espaço para a lista e define os parâmetros iniciais.
-
-
 lista_t *cria() {
     lista_t *lista = malloc(sizeof(lista_t));
 
@@ -44,7 +43,7 @@ void destroi(lista_t *lista) {
  * as devidas verificações.
  * Incrementa o tamanho da lista ao inserir esse novo nó.
  */
-void insere(lista_t *lista, elem x) {
+void insere(lista_t *lista, num x) {
     if (lista == NULL) return;
     
     no_t *p = malloc(sizeof(no_t));
@@ -65,7 +64,7 @@ void insere(lista_t *lista, elem x) {
  * Procura o primeiro nó que contém esse valor, libera a memória
  * reservada para ele, e diminui o tamanho da lista.
  */
-void remover(lista_t *lista, elem x) {
+void remover(lista_t *lista, num x) {
     if (lista == NULL) return;
     no_t *anterior = NULL;
     no_t *p = lista->ini;

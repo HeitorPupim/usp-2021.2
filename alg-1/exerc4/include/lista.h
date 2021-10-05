@@ -4,14 +4,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef int elem;
+typedef int num;
 typedef struct lista_st lista_t;
 
 lista_t *cria();
 void destroi(lista_t *lista);
 
-void insere(lista_t *lista, elem x);
-void remover(lista_t *lista, elem x);
+void insere(lista_t *lista, num x);
+void remover(lista_t *lista, num x);
 
 void imprimir(lista_t *lista);
 int tamanho(lista_t *lista);

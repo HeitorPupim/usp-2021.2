@@ -17,6 +17,7 @@ int main()
         num_2 = readline('\n');
 
         printf(" %s| %s| %s| \n", operacao, num_1, num_2); 
+        
         free(operacao);
         free(num_1);
         free(num_2);
