@@ -14,8 +14,6 @@ void insere(lista_t *lista, elem x);
 void remover(lista_t *lista, elem x);
 
 void imprimir(lista_t *lista);
-
-void rotacionar(lista_t *lista);
 int tamanho(lista_t *lista);
 
 #endif // LISTA_H

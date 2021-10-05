@@ -12,9 +12,8 @@ struct lista_st {
     int tam;
 };
 
-/* Aloca espaço para a lista e
- * define os parâmetros iniciais.
- */
+// Aloca espaço para a lista e define os parâmetros iniciais.
+
 
 lista_t *cria() {
     lista_t *lista = malloc(sizeof(lista_t));
@@ -112,29 +111,4 @@ void imprimir(lista_t *lista) {
         p = p->prox;
     }
     printf("\n");
-}
-
-/* Rotaciona a lista em uma unidade para a direita
- * Busca o penúltimo nó,
- */
-//Ultimo aponta para o primeiro
-//Penultimo aponta pra null
-//Ultimo se torna o primeiro
-//penultimo se torna o ultimo
-void rotacionar(lista_t *lista) {
-    no_t *p = lista->ini;
-    no_t *penultimo = NULL;
-
-    while (p->prox != NULL) {
-        penultimo = p;
-        p = p->prox;
-    }
-
-    no_t *aux = lista->ini;
-
-    lista->ini = lista->fim; // Primeiro aponta para o último
-    lista->fim = penultimo; // Ultimo aponta para o penúltimo
-
-    lista->ini->prox = aux; // Primeiro nó aponta para o inicio anterior
-    lista->fim->prox = NULL; // último nó aponta para NULL
 }
