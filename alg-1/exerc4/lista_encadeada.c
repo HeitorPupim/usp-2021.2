@@ -14,7 +14,6 @@ typedef struct
 
 
 //inserir início da lista
-
 void insertInicio(Lista *lista, int valor)
 {
     No *novo = (No*)malloc(sizeof(No));

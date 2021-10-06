@@ -2,8 +2,9 @@
 
 typedef struct no_st no_t;
 
-struct no_st {
+struct no_st { //bignumber
     num info;
+    int carry;
     no_t *prox;
 };
 
@@ -37,6 +38,22 @@ void destroi(lista_t *lista) {
     }
     free(lista);
 }
+
+void popularLista(char *numero)
+{
+    for (int i = strlen(numero); i >= 0; i-4) //ler de tras pra frente
+    {
+        printf("%c\n", numero[i]);
+    }
+}
+
+
+
+
+
+
+
+
 
 /* Aloca espaço para um nó, seta os parâmetros
  * desse nó e insere no final da lista, fazendo
