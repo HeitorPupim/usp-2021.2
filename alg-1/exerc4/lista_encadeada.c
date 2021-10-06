@@ -1,9 +1,9 @@
 #include <lista_encadeada.h>
 
-typedef struct No 
+typedef struct Node // struct big.number -> lembrar de alterar
 {
-    int valor;
-    struct No *proximo;
+    int valor, carry;
+    struct Node *proximo;
 }No;
 
 typedef struct 
