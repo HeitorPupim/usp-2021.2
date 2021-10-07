@@ -15,7 +15,7 @@ int main()
     for (int i = 0; i < num_operacoes; i++)
     {
         //printf("-----------------------------------\n");
-        //printf("Operaçao %d\n", i+2);
+        //printf("Operaçao %d\n", i+1);
         //ler oq ele vai querer em cada linha
         operacao = readline(' ');
 

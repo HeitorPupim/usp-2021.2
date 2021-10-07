@@ -162,10 +162,15 @@ int igual(lista_t *lista_1,lista_t *lista_2)
     int tamLista1 = lista_1->tam;
     int tamLista2 = lista_2->tam;
     int count = 0;
+    //printf("tamLista1: %d\n",tamLista1);
+    //printf("tamLista2: %d\n",tamLista2);
     if(tamLista1 == tamLista2) // se o tamanho da lista for igual,
     {
-        while (count < tamLista1)
+        while (count <= tamLista1)
         {
+            //printf("posicao 1: %d\n",(encontrarPosicao(lista_1,count)));
+            //printf("posicao 2: %d\n",(encontrarPosicao(lista_2,count)));
+
             if(encontrarPosicao(lista_1,count) != encontrarPosicao(lista_2,count))
             return 0;//false
             count++;
@@ -182,9 +187,22 @@ int maior(lista_t *lista_1,lista_t *lista_2)
     //int count = 0;
 
     // caso 1: se o tamanho for igual, verifica só o primeiro numero
-    if((tamLista1 == tamLista2) && ((encontrarPosicao(lista_1,tamLista1)) > (encontrarPosicao(lista_1,tamLista2))))
+    if((tamLista1 == tamLista2) && ((encontrarPosicao(lista_1,tamLista1)) > (encontrarPosicao(lista_2,tamLista2))))
     return 1; //true
-
+    // caso x: e o tamanho for igual e a posiçao da frente for maior
+    
+    else if(((tamLista1 == tamLista2)))
+    {
+        int count = tamLista1;
+        while (encontrarPosicao(lista_1, count) == encontrarPosicao(lista_2, count))
+        {
+            count--;
+        }
+        if((encontrarPosicao(lista_1,count)) > (encontrarPosicao(lista_2,count)))
+        return 1;
+        else return 0;
+        
+    }
     /* caso 2: compara positivo com negativo
         é maior se o tamanho for diferete (e) os primeiros forem 
         diferentes (e) o primeiro da 2 for -3
@@ -216,10 +234,41 @@ int menor(lista_t *lista_1,lista_t *lista_2)
     int tamLista1 = lista_1->tam;
     int tamLista2 = lista_2->tam;
     //int count = 0;
-
+    //printf("posiçao da lista 1: %d\n",encontrarPosicao(lista_1,tamLista1));
+    //printf("posiçao da lista 2: %d\n",encontrarPosicao(lista_2,tamLista1));
+    //printf("tamanho da lista1 : %d\n", tamLista1);
+    //printf("tamanho da lista2 : %d\n", tamLista2);
+    
     // caso 1: se o tamanho for igual, verifica só o primeiro numero
-    if((tamLista1 == tamLista2) && ((encontrarPosicao(lista_1,tamLista1)) < (encontrarPosicao(lista_1,tamLista2))))
+    
+    /*if((tamLista1 == tamLista2)){
+        if( ((encontrarPosicao(lista_1,tamLista1)) < (encontrarPosicao(lista_2,tamLista2))))
+        {
+            //printf("ENTREI NESSE CARA \n");
+            return 1;
+        }else return 0;
+    
     return 1; //true
+
+    } 
+    */
+    if((tamLista1 == tamLista2) && ((encontrarPosicao(lista_1,tamLista1)) < (encontrarPosicao(lista_2,tamLista2))))
+    return 1;
+    // caso x: e o tamanho for igual e a posiçao da frente for menor
+    
+    else if(((tamLista1 == tamLista2)))
+    {
+        //printf("Entrei nessa porra\n");
+        int count = tamLista1;
+        while (encontrarPosicao(lista_1, count) == encontrarPosicao(lista_2, count))
+        {
+            count--;
+        }
+        if((encontrarPosicao(lista_1,count)) < (encontrarPosicao(lista_2,count)))
+        return 1;
+        else return 0;
+        
+    }
 
     /* caso 2: compara numero negativo com positivo
         é menor se o tamanho for diferete (e) os primeiros forem 
@@ -256,20 +305,24 @@ void soma(lista_t *lista_1,lista_t *lista_2, lista_t *listaSoma)
     int maior = 0;
     int soma = 0;
     int carry = 0;
+    int valLista1, valLista2;
     //int vaiPraLista ;
    // printf("to aqui!! \n");
 
     if(tamLista1 >= tamLista2)   maior = tamLista1; 
     else maior = tamLista2;
     //printf("maior = %d\n", maior);
-    for (int i = 1; i <= maior; i++)
+    for (int i = 1; i <= maior+1; i++)
     {   
-        soma = carry + ((encontrarPosicao(lista_1, i) + encontrarPosicao(lista_2, i)));
+        valLista1 = encontrarPosicao(lista_1, i+1);
+        valLista2 = encontrarPosicao(lista_2, i+1);
+        soma = carry + encontrarPosicao(lista_1, i) + encontrarPosicao(lista_2, i);
         //printf("soma: carry%d + %d + %d",carry, encontrarPosicao(lista_1, i), encontrarPosicao(lista_2, i));
         // vaiPraLista = soma % 10 ;
         if(soma >= 10)  carry = 1;
         else carry = 0;
         //printf("soma: %d\n soma res 10: %d\n carry: %d\n",soma, soma % 10, carry);
+        if((soma == 0) && valLista2 == 0 && valLista1 == 0) break;
         insertInicio(listaSoma, soma % 10);
     }
 }
