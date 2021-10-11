@@ -13,5 +13,3 @@ clean:
 
 valgrind:
 	valgrind --tool=memcheck --leak-check=full --track-origins=yes --show-leak-kinds=all --show-reachable=yes ./$(BIN)
-
-git:
