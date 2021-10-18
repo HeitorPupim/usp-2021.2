@@ -1,75 +1,57 @@
-//QUICK
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <util.h>
 
-int *LerVetor(int n){
-	int *a = (int *)malloc(n * sizeof(int));
+void QuickSort(int *SubVetor, int c, int f, int *VetorSomaQuick, int fim){
+ 
+  int aux = fim;
 
-	if (a == NULL) {
-		printf("ERRO\n");
-		exit(-1);
-	}
-	for (int i = 0; i < n; i++) {
-		int x;
-		scanf("%d", &x);
-		a[i] = x;
-	}
-	return a;
-}
-
-void _quick(int a[], int c, int f){
-  if(c >= f){
+  if(c >= f){ //condiç de parada.
     return;
   }
+  
   int m = (c+f)/2;
-  int pivot = a[m];
+  int pivot = SubVetor[m];
+  VetorSomaQuick[aux] += 1;
   int i = c;
   int j = f;
+  
+  //talvez add uma comp aqui VetorSomaQuick[aux] += 1 ;
   while (1){
-    while(a[i] < pivot){
+    while(SubVetor[i] < pivot){
       i++;
-    }
-    while(a[j] > pivot){
+      VetorSomaQuick[aux] += 1; //comparacoes;
+    }VetorSomaQuick[aux] += 1; //comparacoes;
+    while(SubVetor[j] > pivot){
       j--;
-    }
+      VetorSomaQuick[aux] += 1 ; //comparacoes++;
+    }VetorSomaQuick[aux] += 1; //comparacoes;
     if(j <= i){
       break;
     }
-    int tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-    j++;
+    int tmp = SubVetor[i];
+    SubVetor[i] = SubVetor[j];
+    SubVetor[j] = tmp;
+    i++;
     j--;
+    VetorSomaQuick[aux] += 3 ; //troca++;
+    //printf("VetorSomaQuick[%d]3 = %d\n", aux, VetorSomaQuick[aux]);
   }
-  _quick(a, c, j);
-  _quick(a, j+1, f);
+  QuickSort(SubVetor, c, j, VetorSomaQuick, fim);
+  QuickSort(SubVetor, j+1, f, VetorSomaQuick, fim);
 }
 
-void quick(int a[], int n){
-  _quick(a, 0, n-1);
+int RetornaValorSoma(int *VetorSomaQuick, int n)
+{
+  //printf("VetorSomaQuick1[%d] = %d", n, VetorSomaQuick[n]);
+  return VetorSomaQuick[n];
 }
 
-int imprimeVetor(int n, int *a) {
-	for (int i = 0; i < n; i++) {
-		printf("%d ", a[i]);
-	}
-	printf("\n");
-	return 0;
-}
 
-void destruirVetor(int*a){
-  free(a);
-}
 
-int main(void) {
-  //Numero de elementos do vetor
-	int n;
-	scanf("%d", &n);
-  //Armazena os elementos do vetor
-	int *a = LerVetor(n);
-  quick(a, n);
-	imprimeVetor(n, a);
-  destruirVetor(a);
-	return 0;
-}
+// int imprimeVetor(int n, int *a) {
+// 	for (int i = 0; i < n; i++) {
+// 		printf("%d ", a[i]);
+// 	}
+// 	printf("\n");
+// 	return 0;
+// }
+
