@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <arvore.h>
+#include <cliente.h>
+
 
 int main() {
     arvore_t *a = criarArvore();
@@ -9,7 +11,6 @@ int main() {
     int numOp;
 
     scanf("%d\n", &numOp);
-    printf("numero de operacoes = %d\n", numOp);
 
     char *CPF, *Nome, *Idade, *Saldo;
 
@@ -32,12 +33,6 @@ int main() {
         free(Saldo);
     }
         
-    
-    /*
-    imprimir(a->raiz);
-    printf("\n");
-    */
-    printf("Imprimindo nas ordens..... \n\n");
     printf("Inorder\n");
     emOrdem(a->raiz);
     printf("\n");
