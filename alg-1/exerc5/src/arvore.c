@@ -34,7 +34,7 @@ void destruirArvore(no_t *raiz) {
 
 void imprimir(no_t *raiz) {
     if (raiz != NULL) {
-        printf("%d(", raiz->info);
+        printf("%ld(", raiz->info);
         imprimir(raiz->esq);
         printf(", ");
         imprimir(raiz->dir);
@@ -194,7 +194,7 @@ int remover(arvore_t *a, elem x) {
 
 void preOrdem(no_t *raiz){
     if (raiz != NULL) {
-        printf("%d ", raiz->info);
+        printf("%ld\n", raiz->info);
         preOrdem(raiz->esq);
         preOrdem(raiz->dir);
     }
@@ -203,7 +203,7 @@ void preOrdem(no_t *raiz){
 void emOrdem(no_t *raiz){
     if (raiz != NULL) {
         emOrdem(raiz->esq);
-        printf("%d ", raiz->info);
+        printf("%ld\n", raiz->info);
         emOrdem(raiz->dir);
     }
 }
@@ -212,6 +212,46 @@ void posOrdem(no_t *raiz){
     if (raiz != NULL) {
         posOrdem(raiz->esq);
         posOrdem(raiz->dir);
-        printf("%d ", raiz->info);
+        printf("%ld\n", raiz->info);
     }
+}
+
+no_t *criaNo(long int CPFnum) {
+    no_t *novoNo = malloc(sizeof(no_t));
+
+    novoNo->info = CPFnum;
+    novoNo->dir = NULL;
+    novoNo->esq = NULL;
+
+    return novoNo;
+}
+
+void Insercao(arvore_t *a, no_t *no, long int CPFnum) {
+    if (a->raiz == NULL) {
+        no_t *novoNo = criaNo(CPFnum);
+
+        a->raiz = novoNo;
+        return;
+    }
+    if (CPFnum > no->info) { // insere direita
+        if (no->dir != NULL) {
+            Insercao(a, no->dir, CPFnum);
+        } else {
+            no_t *novoNo = criaNo(CPFnum);
+
+            no->dir = novoNo;
+
+            //inserirDir(a, CPFnum, no->info);
+        }
+    } else if (no->info > CPFnum) { // esquerda
+        if (no->esq != NULL) {
+            Insercao(a, no->esq, CPFnum);
+        } else {
+            no_t *novoNo = criaNo(CPFnum);
+
+            no->esq = novoNo;
+            //inserirEsq(a, CPFnum, no->info);
+        }
+    }
+    else return;
 }

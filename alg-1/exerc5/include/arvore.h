@@ -1,7 +1,7 @@
 #ifndef ARVORE_H
 #define ARVORE_H
 
-typedef int elem;
+typedef long int elem;
 typedef struct no_st no_t;
 
 typedef struct arvore_st {
@@ -18,6 +18,7 @@ no_t *buscaPai(no_t *raiz, elem x);
 int inserirEsq(arvore_t *a, elem x, elem pai);
 int inserirDir(arvore_t *a, elem x, elem pai);
 int remover(arvore_t *a, elem x);
+void Insercao(arvore_t *a, no_t *no, long int CPFnum);
 
 void preOrdem(no_t *raiz);
 void emOrdem(no_t *raiz);
