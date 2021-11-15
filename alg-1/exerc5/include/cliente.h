@@ -3,12 +3,11 @@
 
 #include <arvore.h>
 
-typedef struct no_st cliente_t;
+typedef no_t cliente_t; 
+
 typedef long int IDCliente;
-typedef struct arvore_st
-{
-    cliente_t *raiz;
-}cadastro_t;
+
+typedef arvore_t cadastro_t;
 
 //criar arvore
 cadastro_t *criarCadastro();
@@ -17,7 +16,7 @@ cadastro_t *criarCadastro();
 int cadastroVazio(cadastro_t *cadastro);
 
 //free nos cadastros..
-void destuirCadastros(cliente_t *cliente);
+void destruirCadastros(cliente_t *cliente);
 //imprime os cadastros na ordem de arvore
 void imprimirCadastros(cliente_t *cliente);
 //buscar

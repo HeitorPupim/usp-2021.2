@@ -1,5 +1,9 @@
 #include <cliente.h>
 
+struct cliente_st {
+    IDCliente CPF;
+    cliente_t *esquerdo, *direito;
+};
 
 //criar arvore
 cadastro_t *criarCadastro(){
@@ -14,7 +18,7 @@ int cadastroVazio(cadastro_t *cadastro){
 }
 
 //free nos cadastros..
-void destuirCadastros(cliente_t *cliente)
+void destruirCadastros(cliente_t *cliente)
 {
     destruirArvore(cliente);
 }

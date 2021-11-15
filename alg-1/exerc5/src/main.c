@@ -6,7 +6,8 @@
 
 
 int main() {
-    arvore_t *a = criarArvore();
+
+    cadastro_t *cadastro = criarCadastro();
 
     int numOp;
 
@@ -14,7 +15,7 @@ int main() {
 
     char *CPF, *Nome, *Idade, *Saldo;
 
-    long int CPFnum;
+    IDCliente CPFnum;
 
 
     for (int i = 0; i < numOp; i++)
@@ -25,7 +26,8 @@ int main() {
         Idade = readline(';');
         Saldo = readline('\n');
         
-        Insercao(a, a->raiz, CPFnum);
+        cadastrarCliente(cadastro, cadastro->raiz, CPFnum);
+        //Insercao(a, a->raiz, CPFnum);
         
         free(CPF);
         free(Nome);
@@ -34,17 +36,18 @@ int main() {
     }
         
     printf("Inorder\n");
-    emOrdem(a->raiz);
+    emOrdem(cadastro->raiz);
     printf("\n");
     printf("Preorder\n");
-    preOrdem(a->raiz);
+    preOrdem(cadastro->raiz);
     printf("\n");
     printf("Postorder\n");
-    posOrdem(a->raiz);
+    posOrdem(cadastro->raiz);
     printf("\n");
 
-    destruirArvore(a->raiz);
-    free(a);
+    destruirCadastros(cadastro->raiz);
+    //destruirArvore(a->raiz);
+    free(cadastro);
 
     return EXIT_SUCCESS;
 }

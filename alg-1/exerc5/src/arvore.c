@@ -1,10 +1,7 @@
 #include <arvore.h>
 
 
-struct no_st {
-    elem info;
-    no_t *esq, *dir;
-};
+
 
 
 arvore_t *criarArvore() {

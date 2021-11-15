@@ -5,7 +5,13 @@
 #include <assert.h>
 
 typedef long int elem;
+
 typedef struct no_st no_t;
+
+struct no_st {
+    elem info;
+    no_t *esq, *dir;
+};
 
 typedef struct arvore_st {
     no_t *raiz;
