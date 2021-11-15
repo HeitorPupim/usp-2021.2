@@ -1,6 +1,9 @@
 #ifndef ARVORE_H
 #define ARVORE_H
 
+#include <util.h>
+#include <assert.h>
+
 typedef long int elem;
 typedef struct no_st no_t;
 
