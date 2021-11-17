@@ -1,25 +1,18 @@
 #include <util.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <arvore.h>
 #include <cliente.h>
-
 
 int main() {
 
     cadastro_t *cadastro = criarCadastro();
 
-    int numOp;
+    int numOperacoes;
+    scanf("%d\n", &numOperacoes);
 
-    scanf("%d\n", &numOp);
+    char *CPF, *Nome, *Idade, *Saldo;//leitura
+    IDCliente CPFnum; //conversão
 
-    char *CPF, *Nome, *Idade, *Saldo;
-
-    IDCliente CPFnum;
-
-
-    for (int i = 0; i < numOp; i++)
-    {
+    for (int i = 0; i < numOperacoes; i++){
         CPF = readCPF(';');
         CPFnum = atol(CPF);
         Nome = readline(';');
@@ -27,7 +20,6 @@ int main() {
         Saldo = readline('\n');
         
         cadastrarCliente(cadastro, cadastro->raiz, CPFnum);
-        //Insercao(a, a->raiz, CPFnum);
         
         free(CPF);
         free(Nome);
@@ -46,8 +38,6 @@ int main() {
     printf("\n");
 
     destruirCadastros(cadastro->raiz);
-    //destruirArvore(a->raiz);
     free(cadastro);
-
     return EXIT_SUCCESS;
 }

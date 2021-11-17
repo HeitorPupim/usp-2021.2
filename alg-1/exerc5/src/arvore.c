@@ -1,9 +1,5 @@
 #include <arvore.h>
 
-
-
-
-
 arvore_t *criarArvore() {
     arvore_t *a = malloc(sizeof(arvore_t));
     a->raiz = NULL;
@@ -156,7 +152,6 @@ int remover(arvore_t *a, elem x) {
             p = NULL;
         }
     }
-
     // 2a etapa: remover p
     if (p == NULL) {
         return 0;
@@ -183,7 +178,6 @@ int remover(arvore_t *a, elem x) {
             return remover(a, x);
         }
     }
-
     return 0;
 }
 
