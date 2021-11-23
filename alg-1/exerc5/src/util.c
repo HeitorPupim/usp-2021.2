@@ -1,6 +1,5 @@
 #include <util.h>
 
-
 char* readline(char parada)
 {
     char* linha = NULL;

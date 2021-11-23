@@ -41,3 +41,4 @@ int main() {
     free(cadastro);
     return EXIT_SUCCESS;
 }
+
