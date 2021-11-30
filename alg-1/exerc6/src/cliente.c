@@ -1,8 +1,7 @@
 #include <cliente.h>
 
-
 struct cliente_st {
-    IDCliente CPFnum;
+    IDCliente CPFnum; // corresponde ao cpf formatado que será utilizado na comparação
     char *CPF, *Nome, *Idade, *Saldo;
     cliente_t *esquerdo, *direito;
 };
@@ -54,37 +53,36 @@ void OPInserirNovoCliente(cadastro_t *cadastro)
 void OPBuscarCliente(cadastro_t *cadastro){
      char* aux = readCPF('\n');
         
-        long int x = atol(aux);
-
+        IDCliente x = atol(aux);
         cliente_t *cliente = busca(cadastro->raiz, x);
+        //imprimindo dados:
         printf("Conta :: %s\nCPF :: ",cliente->Nome);
         for(int i = 0; i < 11; i++){
             printf("%c", aux[i]);
             if (i == 2 || i == 5) printf(".");
             if(i == 8) printf("-");
         }
-        
         printf("\nIdade :: %s\nSaldo atual :: R$ %s\n",  cliente->Idade, cliente->Saldo);
+        //limpando memória.
         free(aux);
 }
 
 void OPRemoverCliente(cadastro_t *cadastro){
     char* aux = readCPF('\n');
-    long int x = atol(aux);
+    IDCliente x = atol(aux);
 
     cliente_t *cliente = buscaCliente(cadastro->raiz, x);
+    //imprimindo dados:
     printf("Conta :: %s\nCPF :: ",cliente->Nome);
-
     for(int i = 0; i < 11; i++)
     {
         printf("%c", aux[i]);
         if (i == 2 || i == 5) printf(".");
         if(i == 8) printf("-");
     }
-    
     printf("\nIdade :: %s\nSaldo atual :: R$ %s\n",  cliente->Idade, cliente->Saldo);
+    //remoção 
     removerABB(&cadastro->raiz, x);
-
     printf("Preorder\n");
     preOrdem(cadastro->raiz);
     free(aux);

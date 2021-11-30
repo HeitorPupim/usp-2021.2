@@ -14,7 +14,6 @@ int esta_vazia(arvore_t *a) {
     return 0;
 }
 
-// Chega até uma folha, remove ela, volta pro nó anterior
 void destruirArvore(no_t *raiz) {
     if (raiz != NULL) {
         destruirArvore(raiz->esq);

@@ -2,7 +2,6 @@
 #include <arvore.h>
 #include <cliente.h>
 
-
 int main(){
     cadastro_t *cadastro= criarCadastro();
 
@@ -14,11 +13,11 @@ int main(){
     //Cadastros iniciais:
     for (int i = 0; i < numOperacoes; i++){
         CPF = readCPF(';');
-        CPFnum = atol(CPF);             
+        CPFnum = atol(CPF); 
         Nome = readline(';');
         Idade = readline(';');
         Saldo = readline('\n');
-        
+            
         cadastrarCliente(&cadastro->raiz,CPF,CPFnum, Nome, Idade, Saldo);
     }
 
